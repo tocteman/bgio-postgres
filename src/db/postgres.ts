@@ -11,7 +11,7 @@ export class PostgresStore extends Async {
     if (typeof uriOrOptions === "string") {
       this.sequelize = new Sequelize(uriOrOptions);
     } else {
-      this.sequelize = new Sequelize({ dialect: "postgres", ...uriOrOptions });
+      this.sequelize = new Sequelize({ dialect: "postgres", dialectOptions: {"ssl": true}, ...uriOrOptions });
     }
 
     Game.init(gameAttributes, { sequelize: this.sequelize });
